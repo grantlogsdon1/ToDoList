@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Data.Entity
+﻿namespace ToDoList.Models
 {
-    internal class ListItem
+    public class TaskItem
     {
         public int ListItemId { get; set; }
 
@@ -15,6 +9,5 @@ namespace Data.Entity
         public string? Detail { get; set; }
 
         public bool IsComplete { get; set; }
-
     }
 }

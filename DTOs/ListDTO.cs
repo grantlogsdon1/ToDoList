@@ -1,11 +1,11 @@
-﻿using Data.Entity;
+﻿using Entity;
 
 namespace DTOs
 {
     public class ListDTO
     {
-        public ListHeader ListHeader { get; set; }
+        public TodoList ListHeader { get; set; }
 
-        public List<TaskItem>? Tasks { get; set; }
+        public List<TodoListTask>? Tasks { get; set; }
     }
 }

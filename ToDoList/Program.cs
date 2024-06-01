@@ -1,3 +1,7 @@
+using Data;
+using Microsoft.EntityFrameworkCore;
+using System;
+
 namespace ToDoList
 {
     public class Program
@@ -9,6 +13,10 @@ namespace ToDoList
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.MapDependencies();
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
             var app = builder.Build();
 

@@ -2,9 +2,9 @@
 
 namespace ToDoList.Models
 {
-    public class ListViewModel
+    public class TodoListModel
     {
-        public ListViewModel(ListDTO listDto)
+        public TodoListModel(ListDTO listDto)
         {
             //TODO move mapping to another class
             Name = listDto.ListHeader.Name;

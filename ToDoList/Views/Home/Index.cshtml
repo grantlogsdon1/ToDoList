@@ -1,15 +1,24 @@
 ﻿@model TodoListModel
 
-<h2>@Model.Name</h2>
+<input type="hidden" asp-for="ListId" />
 
-@foreach(var task in Model.Tasks)
+<input class="h2" value="@Model.Name" asp-for="Name" />
+
+@foreach (var task in Model.Tasks)
 {
-    <div class="row">
-        <div class="col-2">
-            <input type="checkbox" value="@task.IsComplete"/>
+    <div class="row" data-task-id="@task.ListItemId" data-list-id="@task.ListId">
+        <input type="hidden" value="@task.ListItemId" name="ListItemId" />
+        <input type="hidden" value="@task.ListId" name="ListId" />
+
+        <div class="col-1 border align-content-center text-center">
+            <input class="auto-save" type="checkbox" checked="@task.IsComplete" id="IsComplete-@{@task.ListItemId}"/>
         </div>
-        <div class="col-10">
-            <input value="@task.Detail" />
+        <div class="col-11 border">
+            <input class="auto-save" value="@task.Detail" id="Detail-@{@task.ListItemId}" />
         </div>
     </div>
+}
+
+@section Scripts {
+    <script src="~/js/todoList.js"></script>
 }

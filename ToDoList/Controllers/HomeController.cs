@@ -23,9 +23,23 @@ namespace ToDoList.Controllers
                 id = 1;
 
             TodoListDTO todoListDto = _todoListService.GetTodoList(id);
-            TodoListModel model = new TodoListModel(todoListDto);
+            TodoListModel model = todoListDto.MapToModel();
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult EditTask([FromBody] TodoListTaskModel task)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            else
+            {
+                return Json(new { success = false});
+            }
+            return Json(new { success = true });
         }
 
 

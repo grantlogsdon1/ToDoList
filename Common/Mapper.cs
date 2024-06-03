@@ -5,7 +5,7 @@ namespace Common
 {
     public static class Mapper
     {
-        public static TodoListDTO Map(this TodoList entity)
+        public static TodoListDTO MapToDto(this TodoList entity)
         {
             TodoListDTO dto = new TodoListDTO();
 
@@ -16,7 +16,7 @@ namespace Common
             return dto;
         }
 
-        public static TodoListTaskDTO Map(this TodoListTask entity)
+        public static TodoListTaskDTO MapToDto(this TodoListTask entity)
         {
             TodoListTaskDTO dto = new TodoListTaskDTO();
 
@@ -27,5 +27,7 @@ namespace Common
 
             return dto;
         }
+
+
     }
 }

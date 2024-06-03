@@ -15,8 +15,8 @@ namespace ToDoList
 
             foreach (TodoListTaskModel taskModel in model.Tasks)
             {
-                TodoListTaskDTO dtoTask = taskModel.MapToDto();
-                dto.Tasks.Add(dtoTask);
+                TodoListTaskDTO taskDto = taskModel.MapToDto();
+                dto.Tasks.Add(taskDto);
             }
 
             return dto;

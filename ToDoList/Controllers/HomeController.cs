@@ -33,13 +33,14 @@ namespace ToDoList.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                TodoListTaskDTO taskDto = task.MapToDto();
+                _todoListService.UpdateTodoListTask(taskDto);
+                return Json(new { success = true });
             }
             else
             {
                 return Json(new { success = false});
             }
-            return Json(new { success = true });
         }
 
 

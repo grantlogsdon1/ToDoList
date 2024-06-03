@@ -20,10 +20,10 @@ namespace Data.Repositories
 
             if (todoListEntity != null)
             {
-                todoListDto = todoListEntity.Map();
+                todoListDto = todoListEntity.MapToDto();
                 todoListDto.Tasks = GetTodoListTasks(id);
             }
-            
+
             return todoListDto;
         }
 
@@ -35,14 +35,27 @@ namespace Data.Repositories
 
             if (taskEntities.Any())
             {
-                foreach(var taskEntity in taskEntities)
+                foreach (var taskEntity in taskEntities)
                 {
-                    TodoListTaskDTO taskDTO = taskEntity.Map();
+                    TodoListTaskDTO taskDTO = taskEntity.MapToDto();
                     todoListTasks.Add(taskDTO);
                 }
             }
 
             return todoListTasks;
+        }
+
+        public void UpdateTodoListTask(TodoListTaskDTO taskDTO)
+        {
+            var taskEntity = _db.Tasks.Where(x => x.ListItemId == taskDTO.ListItemId).FirstOrDefault();
+
+            if (taskEntity != null)
+            {
+                taskEntity.Detail = taskDTO.Detail;
+                taskEntity.IsComplete = taskDTO.IsComplete;
+            }
+
+            _db.SaveChanges();
         }
     }
 }

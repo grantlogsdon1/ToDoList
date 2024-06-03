@@ -1,6 +1,6 @@
 ﻿namespace ToDoList.Models
 {
-    public class TaskItem
+    public class TodoListTaskModel
     {
         public int ListItemId { get; set; }
 

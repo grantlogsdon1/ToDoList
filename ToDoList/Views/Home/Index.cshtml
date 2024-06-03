@@ -1,2 +1,15 @@
-﻿@model 
+﻿@model TodoListModel
 
+<h2>@Model.Name</h2>
+
+@foreach(var task in Model.Tasks)
+{
+    <div class="row">
+        <div class="col-2">
+            <input type="checkbox" value="@task.IsComplete"/>
+        </div>
+        <div class="col-10">
+            <input value="@task.Detail" />
+        </div>
+    </div>
+}

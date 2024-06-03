@@ -15,7 +15,21 @@ namespace ToDoList.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            TodoListModel model = new TodoListModel();
+            model.Name = "Test1";
+            model.Tasks = new List<TodoListTaskModel>()
+            {
+                new TodoListTaskModel()
+                {
+                    Detail = "test task 1"
+                },
+                new TodoListTaskModel()
+                {
+                    Detail = "test task 2"
+                },
+            };
+
+            return View(model);
         }
 
 

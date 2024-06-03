@@ -4,26 +4,28 @@ namespace ToDoList.Models
 {
     public class TodoListModel
     {
-        public TodoListModel()
+        public TodoListModel(TodoListDTO listDto)
         {
+            ListId = listDto.ListId;
+            Name = listDto.Name;
+            CreateDateTime = listDto.CreatedDateTime;
 
-        }
-        public TodoListModel(ListDTO listDto)
-        {
-            //TODO move mapping to another class
-            Name = listDto.ListHeader.Name;
             foreach(var task in listDto.Tasks)
             {
                 TodoListTaskModel taskItem = new TodoListTaskModel();
                 taskItem.ListItemId = task.ListItemId;
-                taskItem.IsComplete = task.IsComplete;
+                taskItem.ListId = task.ListId;
                 taskItem.Detail = task.Detail;
+                taskItem.IsComplete = task.IsComplete;
                 Tasks.Add(taskItem);
             }
         }
-        public string Name { get; set; }
 
-        public List<TodoListTaskModel>? Tasks { get; set; }
+        public int ListId { get; set; }
+        public string? Name { get; set; }
+        public DateTime CreateDateTime { get; set; }
+
+        public List<TodoListTaskModel>? Tasks { get; set; } = new();
 
     }
 }

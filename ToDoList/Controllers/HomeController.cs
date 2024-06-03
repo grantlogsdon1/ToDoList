@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DTOs;
+using Microsoft.AspNetCore.Mvc;
+using Services;
 using System.Diagnostics;
 using ToDoList.Models;
 
@@ -7,27 +9,21 @@ namespace ToDoList.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly TodoListService _todoListService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, TodoListService todoListService)
         {
             _logger = logger;
+            _todoListService = todoListService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            TodoListModel model = new TodoListModel();
-            model.Name = "Test1";
-            model.Tasks = new List<TodoListTaskModel>()
-            {
-                new TodoListTaskModel()
-                {
-                    Detail = "test task 1"
-                },
-                new TodoListTaskModel()
-                {
-                    Detail = "test task 2"
-                },
-            };
+            if (id == 0)
+                id = 1;
+
+            TodoListDTO todoListDto = _todoListService.GetTodoList(id);
+            TodoListModel model = new TodoListModel(todoListDto);
 
             return View(model);
         }

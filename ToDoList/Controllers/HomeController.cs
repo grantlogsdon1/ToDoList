@@ -29,7 +29,7 @@ namespace ToDoList.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditTask([FromBody] TodoListTaskModel task)
+        public IActionResult UpdateTask([FromBody] TodoListTaskModel task)
         {
             if (ModelState.IsValid)
             {
@@ -39,8 +39,20 @@ namespace ToDoList.Controllers
             }
             else
             {
-                return Json(new { success = false});
+                return Json(new { success = false });
             }
+        }
+
+        [HttpPost]
+        public IActionResult UpdateTodoListHeader(int id, string name)
+        {
+            TodoListDTO listDto = new TodoListDTO()
+            {
+                ListId = id,
+                Name = name
+            };
+            _todoListService.UpdateTodoListHeader(listDto);
+            return Json(new { success = true });
         }
 
 

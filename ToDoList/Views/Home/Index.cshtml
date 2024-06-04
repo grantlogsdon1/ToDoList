@@ -1,8 +1,8 @@
 ﻿@model TodoListModel
 
-<input type="hidden" asp-for="ListId" />
+<input type="hidden" id="listId" value="@Model.ListId" />
 
-<input class="h2" value="@Model.Name" asp-for="Name" />
+<input class="h2" id="listName" value="@Model.Name" />
 
 @foreach (var task in Model.Tasks)
 {

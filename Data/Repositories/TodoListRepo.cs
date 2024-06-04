@@ -45,6 +45,18 @@ namespace Data.Repositories
             return todoListTasks;
         }
 
+        public void UpdateTodoListHeader(TodoListDTO todoListDTO)
+        {
+            var listEntity = _db.TodoList.Where(x => x.ListId == todoListDTO.ListId).FirstOrDefault();
+
+            if (listEntity != null)
+            {
+                listEntity.Name = todoListDTO.Name;
+            }
+
+            _db.SaveChanges();
+        }
+
         public void UpdateTodoListTask(TodoListTaskDTO taskDTO)
         {
             var taskEntity = _db.Tasks.Where(x => x.ListItemId == taskDTO.ListItemId).FirstOrDefault();

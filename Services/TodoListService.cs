@@ -17,6 +17,11 @@ namespace Services
             return _todoRepo.GetTodoList(id);
         }
 
+        public void UpdateTodoListHeader(TodoListDTO todoListDto)
+        {
+            _todoRepo.UpdateTodoListHeader(todoListDto);
+        }
+
         public void UpdateTodoListTask(TodoListTaskDTO todoListTaskDTO)
         {
             _todoRepo.UpdateTodoListTask(todoListTaskDTO);

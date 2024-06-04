@@ -30,13 +30,13 @@ function updateListName(id, name) {
 }
 
 function saveTask(row) {
-    var listItemId = row.data('task-id');
+    var TaskId = row.data('task-id');
     var listId = row.data('list-id');
-    var isComplete = $(`#IsComplete-${listItemId}`).is(":checked");
-    var detail = $(`#Detail-${listItemId}`).val();
+    var isComplete = $(`#IsComplete-${TaskId}`).is(":checked");
+    var detail = $(`#Detail-${TaskId}`).val();
 
     let taskData = {
-        ListItemId: listItemId,
+        TaskId: TaskId,
         ListId: listId,
         IsComplete: isComplete,
         Detail: detail

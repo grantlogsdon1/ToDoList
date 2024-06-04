@@ -6,12 +6,12 @@
 
 @foreach (var task in Model.Tasks)
 {
-    <div class="row" data-task-id="@task.ListItemId" data-list-id="@task.ListId">
+    <div class="row" data-task-id="@task.TaskId" data-list-id="@task.ListId">
         <div class="col-1 border align-content-center text-center">
-            <input class="auto-save" type="checkbox" checked="@task.IsComplete" id="IsComplete-@{@task.ListItemId}"/>
+            <input class="auto-save" type="checkbox" checked="@task.IsComplete" id="IsComplete-@{@task.TaskId}"/>
         </div>
         <div class="col-11 border">
-            <input class="auto-save" value="@task.Detail" id="Detail-@{@task.ListItemId}" />
+            <input class="auto-save" value="@task.Detail" id="Detail-@{@task.TaskId}" />
         </div>
     </div>
 }

@@ -29,15 +29,16 @@ namespace Data.Migrations
                 name: "Tasks",
                 columns: table => new
                 {
-                    ListItemId = table.Column<int>(type: "int", nullable: false)
+                    TaskId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ListId = table.Column<int>(type: "int", nullable: false),
                     Detail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsComplete = table.Column<bool>(type: "bit", nullable: false)
+                    IsComplete = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tasks", x => x.ListItemId);
+                    table.PrimaryKey("PK_Tasks", x => x.TaskId);
                     table.ForeignKey(
                         name: "FK_Tasks_TodoList_ListId",
                         column: x => x.ListId,

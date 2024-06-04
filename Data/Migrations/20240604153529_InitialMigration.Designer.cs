@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240601191224_InitialMigration")]
+    [Migration("20240604153529_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -46,11 +46,14 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Entity.TodoListTask", b =>
                 {
-                    b.Property<int>("ListItemId")
+                    b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ListItemId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskId"));
+
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Detail")
                         .HasColumnType("nvarchar(max)");
@@ -61,7 +64,7 @@ namespace Data.Migrations
                     b.Property<int>("ListId")
                         .HasColumnType("int");
 
-                    b.HasKey("ListItemId");
+                    b.HasKey("TaskId");
 
                     b.HasIndex("ListId");
 

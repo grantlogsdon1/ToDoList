@@ -25,40 +25,11 @@ GO
 INSERT INTO [dbo].[Tasks]
            ([ListId]
            ,[Detail]
+		   ,[CreatedDateTime]
            ,[IsComplete])
      VALUES
            (1
            ,'Test task 1'
+		   ,GetDate()
            ,0)
 GO
-
-INSERT INTO [dbo].[Tasks]
-           ([ListId]
-           ,[Detail]
-           ,[IsComplete])
-     VALUES
-           (1
-           ,'Test task 2'
-           ,1)
-GO
-
-INSERT INTO [dbo].[Tasks]
-           ([ListId]
-           ,[Detail]
-           ,[IsComplete])
-     VALUES
-           (1
-           ,'Test task 3'
-           ,1)
-GO
-
-INSERT INTO [dbo].[Tasks]
-           ([ListId]
-           ,[Detail]
-           ,[IsComplete])
-     VALUES
-           (2
-           ,'Test task 3'
-           ,1)
-GO
-

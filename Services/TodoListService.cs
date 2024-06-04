@@ -31,5 +31,10 @@ namespace Services
         {
             _todoRepo.AddTask(listId);
         }
+
+        public void DeleteTask(int taskId)
+        {
+            _todoRepo.DeleteTask(taskId);
+        }
     }
 }

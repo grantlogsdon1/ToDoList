@@ -71,15 +71,26 @@ namespace Data.Repositories
             _db.SaveChanges();
         }
 
-        public void AddTask(int id)
+        public void AddTask(int listId)
         {
             TodoListTask newTask = new TodoListTask()
             {
-                ListId = id,
+                ListId = listId,
                 IsComplete = false
             };
 
             _db.Tasks.Add(newTask);
+            _db.SaveChanges();
+        }
+
+        public void DeleteTask (int taskId)
+        {
+            var task = _db.Tasks.Where(x => x.TaskId == taskId).FirstOrDefault();
+            if(task != null)
+            {
+                _db.Tasks.Remove(task);
+            }
+            _db.SaveChanges();
             _db.SaveChanges();
         }
     }

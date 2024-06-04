@@ -62,6 +62,13 @@ namespace ToDoList.Controllers
             return RedirectToAction("Index", new { listId = listId });
         }
 
+        public IActionResult DeleteTask(int taskId, int listId)
+        {
+            _todoListService.DeleteTask(taskId);
+
+            return RedirectToAction("Index", new { listId = listId });
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

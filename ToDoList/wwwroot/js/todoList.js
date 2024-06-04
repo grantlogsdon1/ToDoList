@@ -10,6 +10,10 @@
         let name = $(this).val();
         updateListName(id, name);
     })
+
+    $('#add-task').on('click', function () {
+        $('#add-task').addClass('disabled');
+    });
 });
 
 function updateListName(id, name) {

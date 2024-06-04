@@ -1,0 +1,18 @@
+﻿@model List<TodoListModel>
+
+@foreach (var list in Model)
+{
+    <div class="border-secondary rounded-3 border p-2 my-2 me-3">
+        <div class="row">
+            <div class="col-9">
+                <h5>@list.Name</h5>
+            </div>
+            <div class="col">
+                <label>@list.CompletedTasks</label>
+                <label>/</label>
+                <label>@list.TotalTasks</label>
+            </div>
+        </div>
+    </div>
+}
+

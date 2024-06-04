@@ -20,3 +20,14 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+main {
+    box-shadow: 0 0 20px 4px rgb(0 0 0 / 12%);
+}
+
+.panel {
+    position: relative;
+    min-height: 100vh;
+    padding-right: 0;
+    box-shadow: 0 0 0 -12px rgb(0 0 0 / 08%)
+}

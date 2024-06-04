@@ -14,6 +14,19 @@ namespace Data.Repositories
             _db = db;
         }
 
+        public List<TodoListDTO> GetAllTodoLists()
+        {
+            List<TodoListDTO> listDTOs = new List<TodoListDTO>();
+            List<TodoList> listEntities = _db.TodoList.ToList();
+
+            foreach(var entity in listEntities)
+            {
+                listDTOs.Add(entity.MapToDto());
+            }
+
+            return listDTOs;
+            
+        }
         public TodoListDTO GetTodoList(int id)
         {
             TodoListDTO todoListDto = null;

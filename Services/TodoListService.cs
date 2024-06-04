@@ -12,6 +12,11 @@ namespace Services
             _todoRepo = todoRepo;
         }
 
+        public List<TodoListDTO> GetAllTodoLists()
+        {
+            return _todoRepo.GetAllTodoLists();
+        }
+
         public TodoListDTO GetTodoList(int id)
         {
             return _todoRepo.GetTodoList(id);

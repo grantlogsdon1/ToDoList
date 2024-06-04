@@ -8,7 +8,12 @@ namespace ToDoList.Models
         public string? Name { get; set; }
         public DateTime CreatedDateTime { get; set; }
 
-        public List<TodoListTaskModel>? Tasks { get; set; } = new();
+        public int CompletedTasks => Tasks.Count(x => x.IsComplete);
+
+        public int TotalTasks => Tasks.Count;
+
+
+        public List<TodoListTaskModel> Tasks { get; set; } = new();
 
     }
 }

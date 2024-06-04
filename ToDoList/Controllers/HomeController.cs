@@ -17,12 +17,12 @@ namespace ToDoList.Controllers
             _todoListService = todoListService;
         }
 
-        public IActionResult Index(int id)
+        public IActionResult Index(int istId)
         {
-            if (id == 0)
-                id = 1;
+            if (istId == 0)
+                istId = 1;
 
-            TodoListDTO todoListDto = _todoListService.GetTodoList(id);
+            TodoListDTO todoListDto = _todoListService.GetTodoList(istId);
             TodoListModel model = todoListDto.MapToModel();
 
             return View(model);
@@ -44,15 +44,22 @@ namespace ToDoList.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateTodoListHeader(int id, string name)
+        public IActionResult UpdateTodoListHeader(int listId, string name)
         {
             TodoListDTO listDto = new TodoListDTO()
             {
-                ListId = id,
+                ListId = listId,
                 Name = name
             };
             _todoListService.UpdateTodoListHeader(listDto);
             return Json(new { success = true });
+        }
+
+        public IActionResult AddTask(int listId)
+        {
+            _todoListService.AddTask(listId);
+
+            return RedirectToAction("Index", new { listId = listId });
         }
 
 

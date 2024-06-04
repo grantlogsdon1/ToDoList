@@ -17,7 +17,7 @@ function updateListName(id, name) {
         url: '/Home/UpdateTodoListHeader',
         type: 'POST',
         data: {
-            id: id,
+            listId: id,
             name: name
         },
         success: function (response) {

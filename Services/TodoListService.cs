@@ -26,5 +26,10 @@ namespace Services
         {
             _todoRepo.UpdateTodoListTask(todoListTaskDTO);
         }
+
+        public void AddTask(int listId)
+        {
+            _todoRepo.AddTask(listId);
+        }
     }
 }

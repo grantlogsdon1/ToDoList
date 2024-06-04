@@ -1,6 +1,7 @@
 ﻿using Common;
 using DTOs;
 using Entity;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace Data.Repositories
 {
@@ -67,6 +68,18 @@ namespace Data.Repositories
                 taskEntity.IsComplete = taskDTO.IsComplete;
             }
 
+            _db.SaveChanges();
+        }
+
+        public void AddTask(int id)
+        {
+            TodoListTask newTask = new TodoListTask()
+            {
+                ListId = id,
+                IsComplete = false
+            };
+
+            _db.Tasks.Add(newTask);
             _db.SaveChanges();
         }
     }

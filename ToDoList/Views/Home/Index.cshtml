@@ -7,9 +7,6 @@
 @foreach (var task in Model.Tasks)
 {
     <div class="row" data-task-id="@task.ListItemId" data-list-id="@task.ListId">
-        <input type="hidden" value="@task.ListItemId" name="ListItemId" />
-        <input type="hidden" value="@task.ListId" name="ListId" />
-
         <div class="col-1 border align-content-center text-center">
             <input class="auto-save" type="checkbox" checked="@task.IsComplete" id="IsComplete-@{@task.ListItemId}"/>
         </div>
@@ -18,6 +15,8 @@
         </div>
     </div>
 }
+
+<a asp-controller="Home" asp-action="AddTask" asp-route-listId="@Model.ListId">+ Add Row</a>
 
 @section Scripts {
     <script src="~/js/todoList.js"></script>

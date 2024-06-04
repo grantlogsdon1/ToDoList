@@ -44,9 +44,10 @@ namespace ToDoList
             TodoListTaskDTO dto = new TodoListTaskDTO();
 
             dto.ListId = model.ListId;
-            dto.ListItemId = model.ListItemId;
+            dto.TaskId = model.TaskId;
             dto.Detail = model.Detail;
             dto.IsComplete = model.IsComplete;
+            dto.CreatedDateTime = model.CreatedDateTime;
 
             return dto;
         }
@@ -56,9 +57,10 @@ namespace ToDoList
             TodoListTaskModel model = new TodoListTaskModel();
 
             model.ListId = dto.ListId;
-            model.ListItemId = dto.ListItemId;
+            model.TaskId = dto.TaskId;
             model.Detail = dto.Detail;
             model.IsComplete = dto.IsComplete;
+            model.CreatedDateTime = dto.CreatedDateTime;
 
             return model;
         }

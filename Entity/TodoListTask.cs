@@ -6,7 +6,7 @@ namespace Entity
     public class TodoListTask
     {
         [Key]
-        public int ListItemId { get; set; }
+        public int TaskId { get; set; }
 
         [ForeignKey(nameof(TodoList))]
         public int ListId { get; set; }
@@ -14,6 +14,8 @@ namespace Entity
         public string? Detail { get; set; }
 
         public bool IsComplete { get; set; }
+
+        public DateTime CreatedDateTime { get; set; } = DateTime.Now;
 
         public TodoList TodoList { get; set; }
     }

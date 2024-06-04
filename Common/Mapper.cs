@@ -20,10 +20,11 @@ namespace Common
         {
             TodoListTaskDTO dto = new TodoListTaskDTO();
 
-            dto.ListItemId = entity.ListItemId;
+            dto.TaskId = entity.TaskId;
             dto.ListId = entity.ListId;
             dto.Detail = entity.Detail;
             dto.IsComplete = entity.IsComplete;
+            dto.CreatedDateTime = entity.CreatedDateTime;
 
             return dto;
         }

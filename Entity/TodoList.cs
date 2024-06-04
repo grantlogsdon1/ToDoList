@@ -9,8 +9,7 @@ namespace Entity
 
         public string? Name { get; set; }
 
-        public DateTime CreatedDateTime { get; set; }
-
+        public DateTime CreatedDateTime { get; set; } = DateTime.Now;
 
         public List<TodoListTask>? Tasks { get; set; }
     }

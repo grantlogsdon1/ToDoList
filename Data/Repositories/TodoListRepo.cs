@@ -60,7 +60,7 @@ namespace Data.Repositories
 
         public void UpdateTodoListTask(TodoListTaskDTO taskDTO)
         {
-            var taskEntity = _db.Tasks.Where(x => x.ListItemId == taskDTO.ListItemId).FirstOrDefault();
+            var taskEntity = _db.Tasks.Where(x => x.TaskId == taskDTO.TaskId).FirstOrDefault();
 
             if (taskEntity != null)
             {

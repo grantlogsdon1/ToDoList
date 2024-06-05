@@ -28,6 +28,17 @@ namespace Data.Repositories
             _db.SaveChanges();
         }
 
+        public void DeleteTodoList(int listId)
+        {
+            TodoList todoList = _db.TodoList.Where(x => x.ListId == listId).FirstOrDefault();
+
+            if (todoList != null)
+            {
+                _db.TodoList.Remove(todoList);
+                _db.SaveChanges();
+            }
+        }
+
         private int GetCountOfNewList()
         {
             return _db.TodoList.Count(x => x.Name.Contains(Constants.NEW_LIST_NAME));

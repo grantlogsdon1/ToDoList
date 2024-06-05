@@ -63,6 +63,13 @@ namespace ToDoList.Controllers
             return Json(new { success = true });
         }
 
+        public IActionResult DeleteList(int listId)
+        {
+            _todoListService.DeleteTodoList(listId);
+
+            return RedirectToAction("Index");
+        }
+
         public IActionResult AddTask(int listId)
         {
             _todoListService.AddTask(listId);

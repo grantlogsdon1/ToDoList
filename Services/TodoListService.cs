@@ -17,6 +17,11 @@ namespace Services
             _todoRepo.AddTodoList();
         }
 
+        public void DeleteTodoList(int listId)
+        {
+            _todoRepo.DeleteTodoList(listId);
+        }
+
         public List<TodoListDTO> GetAllTodoLists()
         {
             var todoLists = _todoRepo.GetAllTodoLists().OrderByDescending(x => x.CreatedDateTime).ToList();

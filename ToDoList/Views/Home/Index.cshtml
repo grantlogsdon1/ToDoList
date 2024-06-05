@@ -2,25 +2,36 @@
 
 <input type="hidden" id="selected-list-id" value="@Model.ListId" />
 
-<input class="h2 modal-title mb-2 border-top-0 border-start-0 border-end-0" id="listName" value="@Model.Name" />
-
-@foreach (var task in Model.Tasks)
-{
-    <div class="row m-2" data-task-id="@task.TaskId" data-list-id="@task.ListId">
-        <div class="col-1 align-content-center text-center">
-            <input class="auto-save form-check" type="checkbox" checked="@task.IsComplete" id="IsComplete-@task.TaskId" />
-        </div>
+<div class="container">
+    <div class="row align-items-baseline">
         <div class="col-10">
-            <input class="auto-save form-control" value="@task.Detail" id="Detail-@task.TaskId" />
+            <input class="h2 modal-title mb-2 border-top-0 border-start-0 border-end-0" id="listName" value="@Model.Name" />
         </div>
-        <div class="col-1">
-            <a class="btn btn-outline-danger" asp-controller="Home" asp-action="DeleteTask" 
-                asp-route-taskId="@task.TaskId" asp-route-listId="@Model.ListId">X</a>
+        <div class="col">
+            <a class="btn btn-danger" asp-controller="Home" asp-action="DeleteList" asp-route-listId="@Model.ListId">Delete List</a>
         </div>
     </div>
-}
-
-<a class="btn btn-primary mt-2" id="add-task" asp-controller="Home" asp-action="AddTask" asp-route-listId="@Model.ListId">+ Add Task</a>
+    <div class="row">
+        @foreach (var task in Model.Tasks)
+        {
+            <div class="row m-2" data-task-id="@task.TaskId" data-list-id="@task.ListId">
+                <div class="col-1 align-content-center text-center">
+                    <input class="auto-save form-check" type="checkbox" checked="@task.IsComplete" id="IsComplete-@task.TaskId" />
+                </div>
+                <div class="col-10">
+                    <input class="auto-save form-control" value="@task.Detail" id="Detail-@task.TaskId" />
+                </div>
+                <div class="col-1">
+                    <a class="btn btn-outline-danger" asp-controller="Home" asp-action="DeleteTask"
+                       asp-route-taskId="@task.TaskId" asp-route-listId="@Model.ListId">X</a>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <a class="btn btn-outline-primary mt-2" id="add-task" asp-controller="Home" asp-action="AddTask" asp-route-listId="@Model.ListId">+ Add Task</a>
+    </div>
+</div>
 
 @section Scripts {
     <script src="~/js/todoList.js"></script>

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DTOs;
+using Microsoft.AspNetCore.Mvc;
 using Services;
+using ToDoList.Models;
 
 namespace ToDoList.Controllers
 {
@@ -15,6 +17,12 @@ namespace ToDoList.Controllers
         public IActionResult Index()
         {
             return ViewComponent("Panel");
+        }
+
+        public IActionResult AddList()
+        {
+            _todoListService.AddTodoList();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -12,14 +12,25 @@ namespace Services
             _todoRepo = todoRepo;
         }
 
+        public void AddTodoList()
+        {
+            _todoRepo.AddTodoList();
+        }
+
         public List<TodoListDTO> GetAllTodoLists()
         {
-            return _todoRepo.GetAllTodoLists();
+            var todoLists = _todoRepo.GetAllTodoLists().OrderByDescending(x => x.CreatedDateTime).ToList();
+            return todoLists;
         }
 
         public TodoListDTO GetTodoList(int id)
         {
             return _todoRepo.GetTodoList(id);
+        }
+
+        public TodoListDTO GetMostRecentTodoList()
+        {
+            return _todoRepo.GetMostRecentTodoList();
         }
 
         public void UpdateTodoListHeader(TodoListDTO todoListDto)

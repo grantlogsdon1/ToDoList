@@ -19,11 +19,19 @@ namespace ToDoList.Controllers
 
         public IActionResult Index(int listId)
         {
-            if (listId == 0)
-                listId = 1;
+            TodoListDTO todoListDto;
+            TodoListModel model;
 
-            TodoListDTO todoListDto = _todoListService.GetTodoList(listId);
-            TodoListModel model = todoListDto.MapToModel();
+            if (listId == 0)
+            {
+                todoListDto = _todoListService.GetMostRecentTodoList();
+                model = todoListDto.MapToModel();
+            }
+            else
+            {
+                todoListDto = _todoListService.GetTodoList(listId);
+                model = todoListDto.MapToModel();
+            }
 
             return View(model);
         }

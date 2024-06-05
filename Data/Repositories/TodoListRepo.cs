@@ -14,18 +14,37 @@ namespace Data.Repositories
             _db = db;
         }
 
+        public void AddTodoList()
+        {
+            TodoList newList = new TodoList();
+            int countOfNewLists = GetCountOfNewList();
+            if (countOfNewLists == 0)
+                newList.Name = Constants.NEW_LIST_NAME;
+            else
+                newList.Name = $"{Constants.NEW_LIST_NAME} ({countOfNewLists})";
+
+
+            _db.Add(newList);
+            _db.SaveChanges();
+        }
+
+        private int GetCountOfNewList()
+        {
+            return _db.TodoList.Count(x => x.Name.Contains(Constants.NEW_LIST_NAME));
+        }
+
         public List<TodoListDTO> GetAllTodoLists()
         {
             List<TodoListDTO> listDTOs = new List<TodoListDTO>();
             List<TodoList> listEntities = _db.TodoList.ToList();
 
-            foreach(var entity in listEntities)
+            foreach (var entity in listEntities)
             {
                 listDTOs.Add(entity.MapToDto());
             }
 
             return listDTOs;
-            
+
         }
         public TodoListDTO GetTodoList(int id)
         {
@@ -38,6 +57,18 @@ namespace Data.Repositories
                 todoListDto.Tasks = GetTodoListTasks(id);
             }
 
+            return todoListDto;
+        }
+
+        public TodoListDTO GetMostRecentTodoList()
+        {
+            TodoListDTO todoListDto = null;
+
+            TodoList todoListEntity = _db.TodoList.OrderByDescending(x => x.CreatedDateTime).FirstOrDefault();
+            if (todoListEntity != null)
+            {
+                todoListDto = todoListEntity.MapToDto();
+            }
             return todoListDto;
         }
 
@@ -96,10 +127,10 @@ namespace Data.Repositories
             _db.SaveChanges();
         }
 
-        public void DeleteTask (int taskId)
+        public void DeleteTask(int taskId)
         {
             var task = _db.Tasks.Where(x => x.TaskId == taskId).FirstOrDefault();
-            if(task != null)
+            if (task != null)
             {
                 _db.Tasks.Remove(task);
             }

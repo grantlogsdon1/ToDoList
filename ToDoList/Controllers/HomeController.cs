@@ -17,12 +17,12 @@ namespace ToDoList.Controllers
             _todoListService = todoListService;
         }
 
-        public IActionResult Index(int istId)
+        public IActionResult Index(int listId)
         {
-            if (istId == 0)
-                istId = 1;
+            if (listId == 0)
+                listId = 1;
 
-            TodoListDTO todoListDto = _todoListService.GetTodoList(istId);
+            TodoListDTO todoListDto = _todoListService.GetTodoList(listId);
             TodoListModel model = todoListDto.MapToModel();
 
             return View(model);

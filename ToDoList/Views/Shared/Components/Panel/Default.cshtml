@@ -2,17 +2,18 @@
 
 @foreach (var list in Model)
 {
-    <div class="border-secondary rounded-3 border p-2 my-2 me-3">
-        <div class="row">
-            <div class="col-9">
-                <h5>@list.Name</h5>
+    <div class="border-secondary rounded-3 border my-2 me-3 p-0">
+        <a asp-controller="Home" asp-action="Index" asp-route-listId="@list.ListId" class="btn btn-outline-secondary btn-block w-100 h-100 todo-list-card" data-list-id="@list.ListId">
+            <div class="row">
+                <div class="col-9 text-start">
+                    <h5 id="panel-card-@list.ListId">@list.Name</h5>
+                </div>
+                <div class="col">
+                    <label>@list.CompletedTasks</label>
+                    <label>/</label>
+                    <label>@list.TotalTasks</label>
+                </div>
             </div>
-            <div class="col">
-                <label>@list.CompletedTasks</label>
-                <label>/</label>
-                <label>@list.TotalTasks</label>
-            </div>
-        </div>
+        </a>
     </div>
 }
-

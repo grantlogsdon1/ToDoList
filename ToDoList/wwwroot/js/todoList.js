@@ -6,7 +6,7 @@
     });
 
     $('#listName').on('change', function () {
-        let id = $('#listId').val();
+        let id = $('#selected-list-id').val();
         let name = $(this).val();
         updateListName(id, name);
     })
@@ -16,16 +16,18 @@
     });
 });
 
-function updateListName(id, name) {
+function updateListName(listId, name) {
     $.ajax({
         url: '/Home/UpdateTodoListHeader',
         type: 'POST',
         data: {
-            listId: id,
+            listId: listId,
             name: name
         },
         success: function (response) {
             console.log('Auto-save for list successful');
+            console.log($('#listName').val());
+            $(`#panel-card-${listId}`).text($('#listName').val());
         },
         error: function (xhr, status, error) {
             console.error('Auto-save for list failed:', error);
@@ -34,13 +36,13 @@ function updateListName(id, name) {
 }
 
 function saveTask(row) {
-    var TaskId = row.data('task-id');
-    var listId = row.data('list-id');
-    var isComplete = $(`#IsComplete-${TaskId}`).is(":checked");
-    var detail = $(`#Detail-${TaskId}`).val();
+    var taskId = row.data('task-id');
+    var listId = $('#selected-list-id').val();
+    var isComplete = $(`#IsComplete-${taskId}`).is(":checked");
+    var detail = $(`#Detail-${taskId}`).val();
 
     let taskData = {
-        TaskId: TaskId,
+        TaskId: taskId,
         ListId: listId,
         IsComplete: isComplete,
         Detail: detail

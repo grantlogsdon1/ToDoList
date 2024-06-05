@@ -11,7 +11,7 @@ function populatePanel() {
         let selectedListId = $('#selected-list-id').val();
         let matchingDiv = $('.todo-list-card[data-list-id="' + selectedListId + '"]');
         matchingDiv.removeClass('btn-outline-secondary')
-        matchingDiv.addClass('btn-outline-primary');
+        matchingDiv.addClass('btn-primary');
 
     });
 };
